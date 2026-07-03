@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accessibility Scanner</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>♿ Accessibility Scanner</h1>
+      <p class="subtitle">Check page accessibility</p>
+    </header>
+
+    <div class="content">
+      <button id="scanBtn" class="btn btn-primary">Scan Page</button>
+      <button id="reportBtn" class="btn btn-secondary">View Report</button>
+
+      <div id="loading" class="loading hidden">
+        <div class="spinner"></div>
+        <p>Scanning page...</p>
+      </div>
+
+      <div id="results" class="results hidden">
+        <div class="summary">
+          <div class="score-card">
+            <div class="score-circle">
+              <span id="score">--</span>
+            </div>
+            <p>Accessibility Score</p>
+          </div>
+        </div>
+
+        <div class="issues-summary">
+          <div class="issue-count critical">
+            <span class="count" id="criticalCount">0</span>
+            <span class="label">Critical Issues</span>
+          </div>
+          <div class="issue-count warning">
+            <span class="count" id="warningCount">0</span>
+            <span class="label">Warnings</span>
+          </div>
+          <div class="issue-count info">
+            <span class="count" id="infoCount">0</span>
+            <span class="label">Tips</span>
+          </div>
+        </div>
+
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="critical">Critical</button>
+          <button class="tab-btn" data-tab="warning">Warnings</button>
+          <button class="tab-btn" data-tab="info">Tips</button>
+        </div>
+
+        <div id="issuesList" class="issues-list"></div>
+      </div>
+
+      <div id="noResults" class="no-results hidden">
+        <p>No issues found! ✓</p>
+        <p class="subtitle">This page is accessible.</p>
+      </div>
+
+      <div id="error" class="error hidden">
+        <p id="errorMessage">An error occurred</p>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <button id="settingsBtn" class="icon-btn" title="Settings">⚙️</button>
+      <button id="helpBtn" class="icon-btn" title="Help">❓</button>
+    </footer>
+  </div>
+
+  <!-- Settings Modal -->
+  <div id="settingsModal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Settings</h2>
+        <button class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <label class="setting">
+          <input type="checkbox" id="highlightIssues" checked>
+          <span>Highlight issues on page</span>
+        </label>
+        <label class="setting">
+          <input type="checkbox" id="autoScan">
+          <span>Auto-scan on page load</span>
+        </label>
+        <label class="setting">
+          <input type="checkbox" id="showTips" checked>
+          <span>Show improvement tips</span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Help Modal -->
+  <div id="helpModal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Help & Guidelines</h2>
+        <button class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <h3>What is Accessibility?</h3>
+        <p>Web accessibility ensures that web applications are usable by everyone, including people with disabilities.</p>
+        
+        <h3>Issue Levels</h3>
+        <ul>
+          <li><strong>Critical:</strong> Prevent access for users with disabilities</li>
+          <li><strong>Warning:</strong> May impact user experience</li>
+          <li><strong>Tips:</strong> Best practice recommendations</li>
+        </ul>
+
+        <h3>Common Issues</h3>
+        <ul>
+          <li>Missing alt text for images</li>
+          <li>Poor color contrast</li>
+          <li>Missing form labels</li>
+          <li>Keyboard navigation issues</li>
+          <li>Missing ARIA attributes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
