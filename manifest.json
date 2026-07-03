@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "Accessibility Scanner",
+  "version": "1.0.0",
+  "description": "Professional accessibility scanner for WCAG 2.2 compliance with custom rules support",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Accessibility Scanner"
+  },
+  "side_panel": {
+    "default_path": "side-panel.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "js/content.js"
+      ],
+      "run_at": "document_end"
+    }
+  ]
+}
